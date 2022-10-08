@@ -9,3 +9,21 @@ before_install:
 
 script:
   - docker run -e CI=true tjsmjr/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "serge-test"
+  env: "Sergetest-env"
+  bucket_name: "elasticbeanstalk-us-east-1-875699579076"
+  bucket_path: "serge-test"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "AWS_SECRET_KEY"
+  
+
+
+
+
+  # Sergetest-env.eba-y8cinquc.us-east-1.elasticbeanstalk.com
